@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Chompoo Day</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Comic Sans MS', cursive;
+}
+
+body{
+    background:white;
+    scroll-behavior:smooth;
+}
+
+section{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px;
+}
+
+/* หน้าแรก */
+.pop{
+    animation: popUp 3.5s ease forwards;
+}
+
+@keyframes popUp{
+    from{transform:translateY(50px); opacity:0;}
+    to{transform:translateY(0); opacity:1;}
+}
+
+.big-text{
+    font-size:100px;
+}
+
+/* หน้า 2 */
+.typing{
+    font-size:32px;
+    line-height:1.7;
+    max-width:80%;
+    white-space:pre-line;
+}
+
+/* ===== หน้า 3 ===== */
+.photo-area{
+    position:relative;
+    width:600px;
+    height:520px;
+    margin-bottom:30px;
+}
+
+/* รูปตรงกลาง */
+.center-line{
+    width:300px;
+    position:absolute;
+    top:55%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    z-index:2;
+}
+
+/* รูปรอบ ๆ */
+.side-pic{
+    width:200px;
+    height:200px;
+    object-fit:cover;
+    border-radius:25px;
+    position:absolute;
+    animation: floatUp 4.5s linear infinite;
+}
+
+.pic-top-left{ top:10px; left:500px; }
+.pic-top-right{ top:10px; right:500px; }
+.pic-left{ top:55%; left:700px; transform:translateY(-50%); }
+.pic-right{ top:55%; right:700px; transform:translateY(-50%); }
+
+@keyframes floatUp{
+    0%{ transform:translateY(60px); opacity:0; }
+    20%{ opacity:1; }
+    70%{ transform:translateY(-120px); opacity:1; }
+    100%{ transform:translateY(-180px); opacity:0; }
+}
+
+/* unlock */
+.lock input{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    border:2px solid black;
+    font-size:24px;
+    text-align:center;
+    margin:10px;
+}
+
+button{
+    padding:10px 25px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+/* หน้าลับ */
+.hidden{
+    display:none;
+    background:#f5f5f5;
+}
+
+/* ===== จดหมายลับ ===== */
+.letter-box{
+    background: rgba(255,255,255,0.8);
+    width:65%;
+    max-width:750px;
+    padding:40px;
+    border-radius:20px;
+    font-style:italic;
+    line-height:1.9;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+.letter-box p{
+    margin-bottom:22px;
+}
+
+/* เพลง */
+audio{
+    margin-top:20px;
+}
+/* ===== รูปมุมล่างขวาในจดหมายลับ ===== */
+
+/* ทำให้กล่องจดหมายเป็นตัวอ้างอิงตำแหน่ง */
+.letter-box{
+    position: relative;
+}
+
+/* กล่องรูป */
+.letter-images{
+    position: absolute;
+    bottom: 0px;
+    right: -150px;
+    display: flex;
+    gap: 15px;
+}
+
+/* ขนาดรูป PNG */
+.letter-images img{
+    width: 150px;   /* อยากใหญ่/เล็ก แก้ตรงนี้ */
+    height: auto;
+}
+.pop-img{
+    transform: rotate(-10deg) scale(0.8);
+    animation: zoomIn 2s ease-in-out infinite;
+}
+
+@keyframes zoomIn{
+    0%{
+        transform: rotate(-10deg) scale(0.8);
+        opacity: 0.6;
+    }
+    60%{
+        transform: rotate(-10deg) scale(1);
+        opacity: 1;
+    }
+    100%{
+        transform: rotate(-10deg) scale(1.05);
+        opacity: 1;
+    }
+}
+.pic-one{
+    position: relative;
+    left: -550px;   /* ซ้าย */
+    top: 0px;
+}
+.pic-two{
+    position: relative;
+    left: -175px;    /* ขวา */
+    top: -10px;    /* ขึ้น */
+}
+.music-text{
+    cursor: pointer;
+    font-size: 32px;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.music-text:hover{
+    transform: scale(1.05);
+    opacity: 0.8;
+}
+/* รูปข้างล่างสุด */
+.bottom-rotate{
+    margin-top: 40px;          /* ระยะห่างจากปุ่มเพลง */
+    display: flex;
+    justify-content: center;
+}
+
+.bottom-rotate img{
+    width: 160px;              /* ปรับขนาดรูป */
+    height: auto;
+    animation: slowRotate 8s linear infinite;
+}
+
+/* หมุนช้าๆ */
+@keyframes slowRotate{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+.bottom-img{
+    width: 180px;     /* ใหญ่/เล็ก */
+    margin-top: -200px; /* เลื่อนลง */
+    position: relative;
+    left: -50px;      /* ซ้าย (-) ขวา (+) */
+    top: 30px;        /* ขึ้น (-) ลง (+) */
+}
+.bottom-rotate img{
+    position: relative;
+    left: 50px;  /* ซ้าย */
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- หน้า 1 -->
+<section>
+    <div class="pop big-text">
+        🎂 What day is today? Today is... <br>
+        Chompoo Day!!! 😊
+    </div>
+</section>
+
+<!-- หน้า 2 -->
+<section id="page2">
+    <h2 style="font-size:48px; margin-bottom:20px;">
+        😊 Dear the person I love most in my life,
+    </h2>
+    <p id="typingText" class="typing"></p>
+</section>
+
+<!-- หน้า 3 -->
+<section>
+    <div class="photo-area">
+        <img src="pic1.jpg" class="side-pic pic-top-left">
+        <img src="pic2.jpg" class="side-pic pic-top-right">
+        <img src="pic3.jpg" class="side-pic pic-left">
+        <img src="pic4.jpg" class="side-pic pic-right">
+        <img src="line.png" class="center-line">
+    </div>
+
+    <h2>Our pictures and story may be small, but they brought us so much happiness.💕</h2>
+    <p>สิ่งเล็กๆที่ผ่านมาด้วยกันดูกี่ทีก็ยิ้มทุกรอบ เค้าจะทะนุถนอมมันไว้อย่างดีเลยหล่ะไอ้อ้วนน</p>
+</section>
+
+<!-- หน้า 4 -->
+<section class="lock">
+    <h2 style="margin-bottom:30px;">👀 UNLOCK TO READ</h2>
+    <div style="margin-bottom:20px;">
+        <input id="n1" maxlength="1">
+        <input id="n2" maxlength="1">
+    </div>
+    <p style="margin-bottom:25px;">เลขวันเกิดเดือนเกิดเธอ!!</p>
+    <button onclick="unlock()">💌 UNLOCK</button>
+</section>
+
+<!-- หน้า 5 : จดหมายลับ -->
+<section id="secret" class="hidden">
+    <div class="letter-box">
+        <h1>Happy birthday 🎉</h1>
+
+        <p>My darling chompoo</p>
+
+        <p>
+        สุขสันต์วันเกิดนะคนเก่ง ปีนี้ก็อายุ 20 แล้ว โตขึ้นอีกปีแล้วนะ  
+        ตลอดระยะเวลาที่ผ่านมาเธอทำเต็มที่มาตลอดเลย เค้ารู้  
+        เพราะฉะนั้นวันไหนที่เธอเหนื่อยวันไหนที่เธอท้อ  
+        เค้าอยากให้เธอได้นั่งพัก ได้หายเหนื่อย  
+        แล้วกลับมาสดชื่นเร็วๆนะ  
+        เธอเป็นคนยิ้มสวยมาแต่ไหนแต่ไรแล้ว  
+        ยิ้มเย้อๆเลยอ้วน เค้าชอบรอยยิ้มของเธอมากก  
+        อย่าให้ใครมาทำร้ายเธอ มาทำให้เธอยิ้มน้อยลงนะ
+	เเล้วก็นะ อย่าร้องไห้บ่อยเลยนะ ร้องเเล้วตาจะบวมเอานะอ้วนน 
+	ดวงตาเธอก็ยังสวยงามหยดย้อยเยี่ยงดวงดาวบนนภา
+	เสมอมาเลยรูุ้ไหมม เค้าบอกทุกครั้งเลยย เค้าอยากเห็นดวงดวงนั้นอีกเยอะๆเลย
+        </p>
+
+        <p>
+        ระหว่างช่วง 20 จะขึ้น 21  
+        เค้าขอให้ช่วงเวลานี้และต่อๆไปของเธอมีแต่ความสุข  
+        สุขภาพแข็งแรง อย่าเจ็บอย่าป่วยเลยนะหัวใจดวงนี้มันเเทบจะทะลักทุกครั้งที่เห็นเธอเป็นอะไรเลยย 
+        อยากให้เธอมีคนรักและเอ็นดูเย้อๆ มีเพื่อนมากกมายย ได้กินของอร่อยๆ  
+        ได้ใช้ชีวิตอย่างที่เธอต้องการจริงๆ ใช้เผื่อเค้าด้วยน้าาา  
+        เค้าอาจจะอวยพรไม่เก่ง  
+        แต่เค้ารักและหวังดี ห่วงใย และอยากดูแล  
+        อยากให้เธอได้ดีในทุกๆเรื่องนะ
+        </p>
+
+        <p>
+        เค้าขอโทษสำหรับทุกอย่างที่ทำไม่ดีกับเธอ  
+        ขอโทษที่ไม่ได้อยู่เคียงข้าง  
+        เค้าคนนี้จะอยู่ตรงนี้เสมอ อยากได้อะไรก็บอก หันหลังมาหนึ่งก้าวจะเจอเค้าเเน่นอน
+              เค้าจะช่วยเหลือหนุนหลังดันเธอไปสู่จุดสูงสุดที่เธอต้องการ 
+               เค้าจะทำเต็มที่ในส่วนของเค้า เเย่จังไม่ได้ถือเค้กให้เธอเลยย 
+                ต้องมากินเค้กที่เค้าซื้อให้ ให้ได้นะ!!  
+   
+        </p>
+
+        <p>
+        ของขวัญก็ไม่ต้องห่วงนะ มีเเน่นอน ตั้งใจเรียนนะเธอ 
+	ถ้าพูดไว้เจอกันมันจะไม่ซึ้ง งั้นเค้าจะบอกว่า เค้าขอเจอเธออีกเรื่อยๆจะได้มั้ยยย 
+	คนๆนี้รักเธอสุดหัวใจ อยากกลับมาหากันไม่ต้องรีรอเลย ได้เสมอ 
+	รักของเค้าจะนาน นานชั่วกัลป์ นานนิรันดร์ สุขสันต์วันเกิดนะ
+        </p>
+
+ 	<p>
+          ด้วยความปรารถนาดีเเละจากคนหวังดีเสมอมา-ไม้เรียว
+        </p>
+	<div class="letter-images">
+   	<img src="love1.png" class="pop-img pic-one">
+	<img src="love2.png" class="pop-img pic-two">
+
+	</div>
+
+    </div>
+</section>
+
+<!-- หน้า 6 : เพลง -->
+<section>
+    <h2 id="musicToggle" class="music-text">
+        🎹 Click to play or pause the music 🎵
+    </h2>
+
+    <audio id="bgMusic">
+        <source src="sunflower.mp3" type="audio/mpeg">
+    </audio>
+<!-- รูปข้างล่างสุด -->
+<div class="bottom-rotate">
+    <img src="love3.png">
+
+</div>
+<!-- รูปล่างสุด -->
+<img src="love4.jpg" class="bottom-img">
+
+</section>
+
+
+<script>
+function unlock(){
+    const code =
+        document.getElementById("n1").value +
+        document.getElementById("n2").value;
+
+    if(code === "22"){
+        document.getElementById("secret").style.display="flex";
+        document.getElementById("secret").scrollIntoView({behavior:"smooth"});
+    }else{
+        alert("รหัสไม่ถูกนะอ้วน แกล้งเค้าป้ะเนี้ยย 🥺");
+    }
+}
+
+/* typing effect */
+const lines = [
+  "Today is a very special day!!",
+  "I wish Chompoo lots of smiles and happiness today",
+  "and in the days to come.",
+  "You are the sunshine in my life.",
+  "I am like a sunflower.",
+  "Thank you for everything.",
+  "I will love you forever Ai uan!!"
+];
+
+const textEl = document.getElementById("typingText");
+const page2 = document.getElementById("page2");
+
+let lineIndex = 0;
+let charIndex = 0;
+
+function typeLine(){
+    if(lineIndex >= lines.length) return;
+
+    if(charIndex < lines[lineIndex].length){
+        textEl.innerHTML += lines[lineIndex][charIndex];
+        charIndex++;
+        setTimeout(typeLine, 45);
+    }else{
+        textEl.innerHTML += "<br>";
+        lineIndex++;
+        charIndex = 0;
+        setTimeout(typeLine, 400);
+    }
+}
+
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            typeLine();
+            observer.unobserve(page2);
+        }
+    });
+},{threshold:0.5});
+
+observer.observe(page2);
+/* คำสั่งสำหรับเปิด-ปิดเพลง */
+const musicBtn = document.getElementById("musicToggle");
+const bgMusic = document.getElementById("bgMusic");
+
+musicBtn.addEventListener("click", function() {
+    if (bgMusic.paused) {
+        bgMusic.play();
+        musicBtn.innerHTML = "🎹 Music is playing... 🎵 (Click to pause)";
+    } else {
+        bgMusic.pause();
+        musicBtn.innerHTML = "🎹 Click to play the music 🎵";
+    }
+});
+
+</script>
+
+</body>
+</html>
