@@ -194,7 +194,25 @@ button{
     margin-left: auto;
     margin-right: auto;
 }
+/* รูปที่หมุนๆ (love3.png) */
+.bottom-rotate img {
+    width: 160px;
+    height: auto;
+    animation: slowRotate 8s linear infinite;
+    /* --- เพิ่มบรรทัดนี้ --- */
+    transform: translate(0px, 0px); /* (ค่าแรก: ซ้าย-ขวา, ค่าสอง: บน-ล่าง) */
+}
 
+/* รูปสุดท้าย (love4.jpg) */
+.bottom-img {
+    width: 180px;
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* --- เพิ่มบรรทัดนี้ --- */
+    transform: translate(0px, 10px); /* เช่น ถ้าอยากให้ขยับลงมาอีก 10px */
+}
 </style>
 </head>
 
@@ -350,4 +368,5 @@ musicBtn.addEventListener("click", function() {
 
 </body>
 </html>
+
 
